@@ -1,0 +1,9 @@
+[Unit]
+Description=Homebridge Service Container
+Before=local-fs.target
+
+[Kube]
+Yaml=/home/rocky/projects/containers/homebridge/homebridge.yml
+
+[Install]
+WantedBy=multi-user.target default.target
