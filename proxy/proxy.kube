@@ -1,0 +1,9 @@
+[Unit]
+Description=Proxy Service Container
+Before=local-fs.target
+
+[Kube]
+Yaml=/home/rocky/projects/containers/proxy/proxy.yml
+
+[Install]
+WantedBy=multi-user.target default.target

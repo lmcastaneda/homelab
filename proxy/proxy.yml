@@ -1,0 +1,36 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: proxy-pod
+  annotations:
+    io.containers.autoupdate/proxy: registry
+  labels:
+    app: proxy
+spec:
+  containers:
+  - name: proxy
+    image: docker.io/jc21/nginx-proxy-manager:latest
+    resources: {}
+    ports:
+    - containerPort: 80
+      hostPort: 80
+    - containerPort: 81
+      hostPort: 81
+    - containerPort: 443
+      hostPort: 443
+    securityContext:
+      allowPrivilegeEscalation: false
+    volumeMounts:
+    - name: proxy-letsencrypt-mnt
+      mountPath: /etc/letsencrypt:z
+    - name: proxy-data-mnt
+      mountPath: /data:z
+  volumes:
+  - name: proxy-letsencrypt-mnt
+    hostPath:
+      path: /container-storage/letsencrypt/data
+      type: Directory
+  - name: proxy-data-mnt
+    hostPath:
+      path: /container-storage/proxy/data
+      type: Directory
