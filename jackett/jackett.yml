@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: jackett-pod
+  annotations:
+    io.containers.autoupdate/jackett: registry
+  labels:
+    app: jackett
+spec:
+  containers:
+  - name: jackett
+    image: lscr.io/linuxserver/jackett:latest
+    env:
+    - name: TZ
+      value: America/New_York
+    - name: PGID
+      value: "1000"
+    - name: PUID
+      value: "1000"
+    securityContext:
+      allowPrivilegeEscalation: false
+    volumeMounts:
+    - name: jackett-mnt
+      mountPath: /config:z
+  volumes:
+  - name: jackett-mnt
+    hostPath:
+      path: /container-storage/jackett
+      type: Directory
