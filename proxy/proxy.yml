@@ -25,6 +25,7 @@ spec:
       mountPath: /etc/letsencrypt:z
     - name: proxy-data-mnt
       mountPath: /data:z
+    restartPolicy: OnFailure
   volumes:
   - name: proxy-letsencrypt-mnt
     hostPath:

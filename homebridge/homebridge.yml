@@ -34,7 +34,7 @@ spec:
     - name: homebridge-mnt
       mountPath: /homebridge
   hostNetwork: true
-  restartPolicy: Always
+  restartPolicy: OnFailure
   volumes:
   - name: homebridge-mnt
     hostPath:
