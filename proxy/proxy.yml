@@ -23,7 +23,13 @@ spec:
       mountPath: /etc/letsencrypt:z
     - name: proxy-data-mnt
       mountPath: /data:z
-    restartPolicy: OnFailure
+    restartPolicy: Always
+    livenessProbe:
+      exec:
+        command:
+        - /usr/bin/check-health
+      periodSeconds: 10
+      initialDelaySeconds: 5
   volumes:
   - name: proxy-letsencrypt-mnt
     hostPath:

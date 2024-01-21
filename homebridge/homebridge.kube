@@ -7,3 +7,6 @@ Yaml=/home/rocky/projects/containers/homebridge/homebridge.yml
 
 [Install]
 WantedBy=multi-user.target default.target
+
+[Service]
+TimeoutStartSec=900
