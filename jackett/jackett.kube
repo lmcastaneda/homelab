@@ -3,7 +3,7 @@ Description=Jackett Service Container
 Before=local-fs.target
 
 [Kube]
-Yaml=/home/rocky/projects/containers/jackett/jackett.yml
+Yaml=/home/luis/projects/homelab/jackett/jackett.yml
 
 [Install]
 WantedBy=multi-user.target default.target

@@ -3,7 +3,7 @@ kind: Pod
 metadata:
   name: homebridge-pod
   annotations:
-    bind-mount-options: /container-storage/homebridge:z
+    bind-mount-options: /mnt/storage/homebridge:z
     io.container.autoupdate/homebridge: registry
   labels:
     app: homebridge
@@ -30,6 +30,12 @@ spec:
         - CAP_MKNOD
         - CAP_NET_ADMIN
         - CAP_NET_RAW
+    livenessProbe:
+      httpGet:
+        path: /api
+        port: 8581
+      periodSeconds: 10
+      initialDelaySeconds: 5
     volumeMounts:
     - name: homebridge-mnt
       mountPath: /homebridge
@@ -38,5 +44,5 @@ spec:
   volumes:
   - name: homebridge-mnt
     hostPath:
-      path: /container-storage/homebridge
+      path: /mnt/storage/homebridge
       type: Directory

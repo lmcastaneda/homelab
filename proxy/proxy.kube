@@ -4,7 +4,7 @@ Before=local-fs.target
 
 [Kube]
 LogDriver=journald
-Yaml=/home/rocky/projects/containers/proxy/proxy.yml
+Yaml=/home/luis/projects/homelab/proxy/proxy.yml
 
 [Install]
 WantedBy=multi-user.target default.target

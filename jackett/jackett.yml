@@ -22,8 +22,9 @@ spec:
     volumeMounts:
     - name: jackett-mnt
       mountPath: /config:z
+    restartPolicy: Always
   volumes:
   - name: jackett-mnt
     hostPath:
-      path: /container-storage/jackett
+      path: /mnt/storage/jackett
       type: Directory
