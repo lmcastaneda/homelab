@@ -23,6 +23,12 @@ spec:
     - name: jackett-mnt
       mountPath: /config:z
     restartPolicy: Always
+    livenessProbe:
+      httpGet:
+        path: /
+        port: 9117
+      periodSeconds: 10
+      initialDelaySeconds: 5
   volumes:
   - name: jackett-mnt
     hostPath:
