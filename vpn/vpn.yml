@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: vpn-pod
+  annotations:
+    io.containers.autoupdate/vpn: registry
+  labels:
+    app: vpn
+spec:
+  containers:
+  - name: nordvpn
+    image: ghcr.io/bubuntux/nordvpn
+    resources: {}
+    env:
+    - name: TOKEN
+      value: e9f2abc92ba3cc57cab5e865a608d87ba14ab85630f0561faeccdd5ab88fd653
+    - name: CONNECT
+      value: United_States 
+    - name: TECHNOLOGY
+      value: NordLynx
+    - name: NETWORK
+      value: 192.168.4.0/24
+    securityContext:
+      allowPrivilegeEscalation: true
+      capabilities:
+        add:
+        - CAP_NET_ADMIN
+        - CAP_NET_RAW
+  hostNetwork: true
+  restartPolicy: OnFailure
