@@ -1,0 +1,17 @@
+[Unit]
+Description=Heimdal Service
+Wants=network-online.target
+After=local-fs.target
+
+[Service]
+Restart=always
+
+[Container]
+ContainerName=heimdall
+Image=ghcr.io/linuxserver/heimdall:latest
+AutoUpdate=registry
+EnvironmentFile=env/env
+Volume=/mnt/storage/heimdall:/config:z
+
+[Install]
+WantedBy=multi-user.target default.target 
