@@ -1,0 +1,12 @@
+# Global
+TZ=America/New_York
+PGID=1000
+PUID=1000
+
+# homebridge
+HOMEBRIDGE_CONFIG_UI=1
+HOMEBRIDGE_CONFIG_UI_PORT=8581
+
+# nord
+PRIVATE_KEY=iJi7aSDcdwspyzczJjH2CYtydFv2HqyIQJbu/7aknEk=
+NET_LOCAL=192.168.4.0/24
