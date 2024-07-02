@@ -11,6 +11,7 @@ ContainerName=heimdall
 Image=ghcr.io/linuxserver/heimdall:latest
 AutoUpdate=registry
 EnvironmentFile=env/env
+Network=podman-default-kube-network
 Volume=/mnt/storage/heimdall:/config:z
 
 [Install]
